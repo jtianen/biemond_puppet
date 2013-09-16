@@ -126,22 +126,15 @@ define oradb::installdb( $version                 = undef,
       }
     }
 
-<<<<<<< HEAD
-=======
     $path = $downloadDir
     
->>>>>>> upstream/master
     if ( $zipExtract ) {
       # In $downloadDir, will Puppet extract the ZIP files or is this a pre-extracted directory structure.
       if $version == '12.1.0.1' {
         # db file 1 installer zip
         file { "${path}/${file}_1of2.zip":
           source      => "${mountPoint}/${file}_1of2.zip",
-<<<<<<< HEAD
-          require     => File[$path],
-=======
           require     => File[$downloadDir],
->>>>>>> upstream/master
         }
         exec { "extract ${path}/${file}_1of2.zip":
           command     => "unzip -o ${path}/${file}_1of2.zip -d ${path}/${file}",
@@ -164,11 +157,7 @@ define oradb::installdb( $version                 = undef,
         # db file 1 installer zip
         file { "${path}/${file}_1of2.zip":
           source      => "${mountPoint}/${file}_1of2.zip",
-<<<<<<< HEAD
-          require     => File[$path],
-=======
           require     => File[$downloadDir],
->>>>>>> upstream/master
         }
         exec { "extract ${path}/${file}_1of2.zip":
           command     => "unzip -o ${path}/${file}_1of2.zip -d ${path}/${file}",
@@ -189,11 +178,7 @@ define oradb::installdb( $version                 = undef,
         # db file 1 installer zip
         file { "${path}/${file}_1of7.zip":
           source      => "${mountPoint}/${file}_1of7.zip",
-<<<<<<< HEAD
-          require     => File[$path],
-=======
           require     => File[$downloadDir],
->>>>>>> upstream/master
         }
         exec { "extract ${path}/${file}_1of7.zip":
           command     => "unzip -o ${path}/${file}_1of7.zip -d ${path}/${file}",
@@ -285,20 +270,12 @@ define oradb::installdb( $version                 = undef,
         # In $downloadDir, will Puppet extract the ZIP files or is this a pre-extracted directory structure.
         exec { "install oracle database ${title}":
           command     => "/bin/sh -c 'unset DISPLAY;${path}/${file}/database/runInstaller -silent -waitforcompletion -responseFile ${path}/db_install_${version}.rsp'",
-<<<<<<< HEAD
-          require     => [File ["${oraInstPath}/oraInst.loc"],File["${path}/db_install_${version}.rsp"],Exec["extract ${path}/${file}_2of2.zip"]],
-=======
           require     => [File ["${oraInstPath}/oraInst.loc"],File["${path}/db_install_${version}.rsp"],Exec["extract ${path}/${file}_1of2.zip"],Exec["extract ${path}/${file}_2of2.zip"]],
->>>>>>> upstream/master
           creates     => $oracleHome,
         }
       } else {
         exec { "install oracle database ${title}":
-<<<<<<< HEAD
-          command     => "/bin/sh -c 'unset DISPLAY;${path}/database/runInstaller -silent -waitforcompletion -responseFile ${path}/db_install_${version}.rsp'",
-=======
           command     => "/bin/sh -c 'unset DISPLAY;${path}/${file}/database/runInstaller -silent -waitforcompletion -responseFile ${path}/db_install_${version}.rsp'",
->>>>>>> upstream/master
           require     => [File ["${oraInstPath}/oraInst.loc"],File["${path}/db_install_${version}.rsp"]],
           creates     => $oracleHome,
         }
@@ -310,20 +287,12 @@ define oradb::installdb( $version                 = undef,
         # In $downloadDir, will Puppet extract the ZIP files or is this a pre-extracted directory structure.
         exec { "install oracle database ${title}":
           command     => "/bin/sh -c 'unset DISPLAY;${path}/${file}/database/runInstaller -silent -waitforcompletion -responseFile ${path}/db_install_${version}.rsp'",
-<<<<<<< HEAD
-          require     => [File ["${oraInstPath}/oraInst.loc"],File["${path}/db_install_${version}.rsp"],Exec["extract ${path}/${file}_7of7.zip"]],
-=======
           require     => [File ["${oraInstPath}/oraInst.loc"],File["${path}/db_install_${version}.rsp"],Exec["extract ${path}/${file}_1of7.zip"],Exec["extract ${path}/${file}_7of7.zip"]],
->>>>>>> upstream/master
           creates     => $oracleHome,
         }
       } else {
         exec { "install oracle database ${title}":
-<<<<<<< HEAD
-          command     => "/bin/sh -c 'unset DISPLAY;${path}/database/runInstaller -silent -waitforcompletion -responseFile ${path}/db_install_${version}.rsp'",
-=======
           command     => "/bin/sh -c 'unset DISPLAY;${path}/${file}/database/runInstaller -silent -waitforcompletion -responseFile ${path}/db_install_${version}.rsp'",
->>>>>>> upstream/master
           require     => [File ["${oraInstPath}/oraInst.loc"],File["${path}/db_install_${version}.rsp"]],
           creates     => $oracleHome,
         }
@@ -335,20 +304,12 @@ define oradb::installdb( $version                 = undef,
         # In $downloadDir, will Puppet extract the ZIP files or is this a pre-extracted directory structure.
         exec { "install oracle database ${title}":
           command     => "/bin/sh -c 'unset DISPLAY;${path}/${file}/database/runInstaller -silent -waitforcompletion -responseFile ${path}/db_install_${version}.rsp'",
-<<<<<<< HEAD
-          require     => [File ["${oraInstPath}/oraInst.loc"],File["${path}/db_install_${version}.rsp"],Exec["extract ${path}/${file}_2of2.zip"]],
-=======
           require     => [File ["${oraInstPath}/oraInst.loc"],File["${path}/db_install_${version}.rsp"],Exec["extract ${path}/${file}_1of2.zip"],Exec["extract ${path}/${file}_2of2.zip"]],
->>>>>>> upstream/master
           creates     => $oracleHome,
         }
       } else {
         exec { "install oracle database ${title}":
-<<<<<<< HEAD
-          command     => "/bin/sh -c 'unset DISPLAY;${path}/database/runInstaller -silent -waitforcompletion -responseFile ${path}/db_install_${version}.rsp'",
-=======
           command     => "/bin/sh -c 'unset DISPLAY;${path}/${file}/database/runInstaller -silent -waitforcompletion -responseFile ${path}/db_install_${version}.rsp'",
->>>>>>> upstream/master
           require     => [File ["${oraInstPath}/oraInst.loc"],File["${path}/db_install_${version}.rsp"]],
           creates     => $oracleHome,
         }
@@ -369,4 +330,4 @@ define oradb::installdb( $version                 = undef,
       require         => Exec["install oracle database ${title}"],
     }
   }
-}
+} 
