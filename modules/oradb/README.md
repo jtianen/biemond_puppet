@@ -12,11 +12,9 @@ Works with Puppet 2.7 & 3.0
 Version updates
 ---------------
 
-<<<<<<< HEAD
-=======
+- 0.8.4 updated license to Apache 2.0
 - 0.8.3 support for extracted oracle software (shared storage) with zipExtract , RCU product value "all"    
 - 0.8.2 OPatch upgrade fix for Offline, option to skip to create user and group    
->>>>>>> upstream/master
 - 0.8.1 Removed sleep and replaced by waitforcompletion
 - 0.8.0 Autostart bugfixes and support for oracle 11.2.0.4  database
 - 0.7.9 Autostart of listener and database with chkconfig / init.d
